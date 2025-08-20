@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "eb953c63-d734-4aac-a33d-253a3b4e180a",
+		"name": "MyCollection",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47309368",
+		"_collection_link": "https://fidelisbishop-6183451.postman.co/workspace/Bishop-Samuel-Fidelis-Ime's-Wor~954abc98-20c7-4dc2-8bea-498c5829a8cd/collection/47309368-eb953c63-d734-4aac-a33d-253a3b4e180a?action=share&source=collection_link&creator=47309368"
+	},
+	"item": [
+		{
+			"name": "Get data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://facebook.com",
+					"protocol": "https",
+					"host": [
+						"facebook",
+						"com"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": [
+				{
+					"name": "Get data",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://facebook.com",
+							"protocol": "https",
+							"host": [
+								"facebook",
+								"com"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "fr=0HP8vWRM27xikXdJc..BokOSS..AAA.0.0.BokOWr.AWdY7ymiuyd-PzyyKxdZgj-LK84; expires=Sun, 02-Nov-2025 16:54:03 GMT; Max-Age=7776000; path=/; domain=.facebook.com; secure; httponly"
+						},
+						{
+							"key": "reporting-endpoints",
+							"value": "coop_report=\"https://www.facebook.com/browser_reporting/coop/?minimize=0\", default=\"https://www.facebook.com/ajax/browser_error_reports/?device_level=unknown&brsid=7534774699752103768&cpp=C3&cv=1025478390&st=1754326443171\", permissions_policy=\"https://www.facebook.com/ajax/browser_error_reports/\""
+						},
+						{
+							"key": "report-to",
+							"value": "{\"max_age\":2592000,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/browser_reporting\\/coop\\/?minimize=0\"}],\"group\":\"coop_report\",\"include_subdomains\":true}, {\"max_age\":259200,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/?device_level=unknown&brsid=7534774699752103768&cpp=C3&cv=1025478390&st=1754326443171\"}]}, {\"max_age\":21600,\"endpoints\":[{\"url\":\"https:\\/\\/www.facebook.com\\/ajax\\/browser_error_reports\\/\"}],\"group\":\"permissions_policy\"}"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "default-src blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;script-src *.facebook.com *.fbcdn.net *.facebook.net 127.0.0.1:* 'nonce-sw5QE4TB' blob: 'self' connect.facebook.net 'unsafe-eval' https://*.google-analytics.com *.google.com;style-src *.fbcdn.net data: *.facebook.com 'unsafe-inline' https://fonts.googleapis.com;connect-src *.facebook.com facebook.com *.fbcdn.net *.facebook.net wss://*.facebook.com:* wss://*.whatsapp.com:* wss://*.fbcdn.net attachment.fbsbx.com ws://localhost:* blob: *.cdninstagram.com 'self' http://localhost:3103 wss://gateway.facebook.com wss://edge-chat.facebook.com wss://snaptu-d.facebook.com wss://kaios-d.facebook.com/ v.whatsapp.net *.fbsbx.com *.fb.com https://*.google-analytics.com;font-src data: *.facebook.com *.fbcdn.net *.fbsbx.com https://fonts.gstatic.com;img-src *.fbcdn.net *.facebook.com data: https://*.fbsbx.com facebook.com *.cdninstagram.com fbsbx.com fbcdn.net connect.facebook.net *.carriersignal.info blob: android-webview-video-poster: *.whatsapp.net *.fb.com *.oculuscdn.com *.tenor.co *.tenor.com *.giphy.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.google-analytics.com;media-src *.cdninstagram.com blob: *.fbcdn.net *.fbsbx.com www.facebook.com *.facebook.com data: *.tenor.co *.tenor.com https://*.giphy.com;child-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;frame-src *.facebook.com *.fbsbx.com fbsbx.com data: www.instagram.com *.fbcdn.net accounts.meta.com *.accounts.meta.com https://trustly.one/ https://*.trustly.one/ https://paywithmybank.com/ https://*.paywithmybank.com/ https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://td.doubleclick.net *.google.com *.doubleclick.net;manifest-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;object-src data: blob: 'self' https://*.fbsbx.com *.facebook.com *.fbcdn.net;worker-src blob: *.facebook.com data:;block-all-mixed-content;upgrade-insecure-requests;"
+						},
+						{
+							"key": "document-policy",
+							"value": "force-load-at-top"
+						},
+						{
+							"key": "document-policy",
+							"value": "include-js-call-stacks-in-crash-reports"
+						},
+						{
+							"key": "permissions-policy",
+							"value": "accelerometer=(), attribution-reporting=(self), autoplay=(), bluetooth=(), browsing-topics=(self), camera=(self), ch-device-memory=(), ch-downlink=(), ch-dpr=(), ch-ect=(), ch-rtt=(), ch-save-data=(), ch-ua-arch=(), ch-ua-bitness=(), ch-viewport-height=(), ch-viewport-width=(), ch-width=(), clipboard-read=(self), clipboard-write=(self), compute-pressure=(), display-capture=(self), encrypted-media=(self), fullscreen=(self), gamepad=*, geolocation=(self), gyroscope=(), hid=(), idle-detection=(), interest-cohort=(self), keyboard-map=(), local-fonts=(), magnetometer=(), microphone=(self), midi=(), otp-credentials=(), payment=(), picture-in-picture=(self), private-state-token-issuance=(), publickey-credentials-get=(self), screen-wake-lock=(), serial=(), shared-storage=(), shared-storage-select-url=(), private-state-token-redemption=(), usb=(), unload=(self), window-management=(), xr-spatial-tracking=(self);report-to=\"permissions_policy\""
+						},
+						{
+							"key": "cross-origin-resource-policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "cross-origin-opener-policy",
+							"value": "unsafe-none;report-to=\"coop_report\""
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "private, no-cache, no-store, must-revalidate"
+						},
+						{
+							"key": "Expires",
+							"value": "Sat, 01 Jan 2000 00:00:00 GMT"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "0"
+						},
+						{
+							"key": "origin-agent-cluster",
+							"value": "?1"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; preload"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html; charset=\"utf-8\""
+						},
+						{
+							"key": "X-FB-Debug",
+							"value": "QWf7OGKNPeFBTZxgppSwL3bL4Xx7OsnGU+HNcHm7AaqSDHLLP1Zeo0VxrFXXy38r3okK/moqTHEMa+U2eSqHRA=="
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 04 Aug 2025 16:54:03 GMT"
+						},
+						{
+							"key": "X-FB-Connection-Quality",
+							"value": "EXCELLENT; q=0.9, rtt=6, rtx=0, c=10, mss=1380, tbw=3405, tp=-1, tpl=-1, uplat=127, ullat=0"
+						},
+						{
+							"key": "Alt-Svc",
+							"value": "h3=\":443\"; ma=86400"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "https://facebook.com",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code should be 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Status code name should have an OK string\", function () {",
+							"    pm.response.to.have.status(\"OK\");",
+							"});",
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,202]);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://facebook.com",
+					"protocol": "https",
+					"host": [
+						"facebook",
+						"com"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

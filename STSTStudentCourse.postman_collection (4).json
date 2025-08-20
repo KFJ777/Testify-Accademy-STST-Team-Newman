@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "238a5472-dfbd-4af4-b097-59e1e0bd9ce3",
+		"name": "STSTStudentCourse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47309368",
+		"_collection_link": "https://fidelisbishop-6183451.postman.co/workspace/Bishop-Samuel-Fidelis-Ime's-Wor~954abc98-20c7-4dc2-8bea-498c5829a8cd/collection/47309368-238a5472-dfbd-4af4-b097-59e1e0bd9ce3?action=share&source=collection_link&creator=47309368"
+	},
+	"item": [
+		{
+			"name": "Get All Entries",
+			"item": [
+				{
+					"name": "Get All Entries",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code name should have an OK string\", function () {\r",
+									"    pm.response.to.have.status(\"OK\");\r",
+									"});\r",
+									"\r",
+									"   var jsonData = pm.response.json();\r",
+									"   console.log(jsonData)\r",
+									"   console.log(jsonData.expiredDate)\r",
+									"\r",
+									"pm.test(\"Your test name\", function () {\r",
+									"     pm.expect(\"Your test name\").to.eql(\"Your test name\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"8\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"8\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"\r",
+									"/**\r",
+									" * \r",
+									" */\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://demo.fusio-project.org/index.php/",
+							"protocol": "https",
+							"host": [
+								"demo",
+								"fusio-project",
+								"org"
+							],
+							"path": [
+								"index.php",
+								""
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "https://demo.fusio-project.org/index.php/"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
