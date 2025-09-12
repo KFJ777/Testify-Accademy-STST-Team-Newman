@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>FinalSTSTKongaAutomationProject_13092024.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+FinalSTSTKongaAutomationProject_13092024.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">io</span><span class="s2">.</span><span class="s1">qameta</span><span class="s2">.</span><span class="s1">allure</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">firefox</span><span class="s2">.</span><span class="s1">FirefoxDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">testng</span><span class="s2">.</span><span class="s1">annotations</span><span class="s2">.*;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Objects</span><span class="s2">;</span>
+
+<span class="s1">@Epic</span><span class="s2">(</span><span class="s3">&quot;Konga Automation Test2&quot;</span><span class="s2">)</span>
+<span class="s1">@Feature</span><span class="s2">(</span><span class="s3">&quot;E2E Shopping Flow&quot;</span><span class="s2">)</span>
+<span class="s1">@Owner</span><span class="s2">(</span><span class="s3">&quot;Fidelis Bishop&quot;</span><span class="s2">)  </span><span class="s4">// 👈 shows tester name in Allure</span>
+<span class="s0">public class </span><span class="s1">FinalSTSTKongaAutomationProject_13092024 </span><span class="s2">{</span>
+
+    <span class="s1">WebDriver driver</span><span class="s2">;</span>
+
+    <span class="s1">@BeforeTest</span>
+    <span class="s1">@Description</span><span class="s2">(</span><span class="s3">&quot;Setup browser before starting test&quot;</span><span class="s2">)</span>
+    <span class="s1">@Severity</span><span class="s2">(</span><span class="s1">SeverityLevel</span><span class="s2">.</span><span class="s1">BLOCKER</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">setUp</span><span class="s2">() {</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">FirefoxDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span><span class="s2">(</span><span class="s1">description </span><span class="s2">= </span><span class="s3">&quot;Full end-to-end shopping journey on Konga with invalid card payment&quot;</span><span class="s2">)</span>
+    <span class="s1">@Story</span><span class="s2">(</span><span class="s3">&quot;User signs in, shops, adds to cart, and attempts payment&quot;</span><span class="s2">)</span>
+    <span class="s1">@Severity</span><span class="s2">(</span><span class="s1">SeverityLevel</span><span class="s2">.</span><span class="s1">CRITICAL</span><span class="s2">)</span>
+    <span class="s1">@Link</span><span class="s2">(</span><span class="s1">name </span><span class="s2">= </span><span class="s3">&quot;Konga Website&quot;</span><span class="s2">, </span><span class="s1">url </span><span class="s2">= </span><span class="s3">&quot;https://www.konga.com&quot;</span><span class="s2">) </span><span class="s4">// 👈 clickable link in report</span>
+    <span class="s0">public void </span><span class="s1">kongaShoppingTest</span><span class="s2">() {</span>
+        <span class="s1">stepOpenKonga</span><span class="s2">();</span>
+        <span class="s1">stepLogin</span><span class="s2">();</span>
+        <span class="s1">stepShopComputer</span><span class="s2">();</span>
+        <span class="s1">stepCheckout</span><span class="s2">();</span>
+        <span class="s1">stepPayment</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Step</span><span class="s2">(</span><span class="s3">&quot;Open Konga homepage&quot;</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">stepOpenKonga</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://www.konga.com/&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">Allure</span><span class="s2">.</span><span class="s1">addAttachment</span><span class="s2">(</span><span class="s3">&quot;Final STST Konga Automation Project&quot;</span><span class="s2">, </span><span class="s1">Objects</span><span class="s2">.</span><span class="s1">requireNonNull</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">.</span><span class="s1">getTitle</span><span class="s2">()));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Step</span><span class="s2">(</span><span class="s3">&quot;Login with valid credentials&quot;</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">stepLogin</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/div[4]/a&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;username&quot;</span><span class="s2">)).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;fidelisbishop@gmail.com&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;password&quot;</span><span class="s2">)).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;Carbon1680&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/div[1]/div/section/div[4]/section/section/div/aside/div[2]/div/form/div[3]/button&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Step</span><span class="s2">(</span><span class="s3">&quot;Navigate to Computers and Accessories, select MacBook&quot;</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">stepShopComputer</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/div[1]/div/section/div[3]/nav/div[3]/div[2]/div/a[2]&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/div[1]/div/section/div[3]/section/main/section/section/section/section/div/section/div[2]/div[2]/ul/li[6]/a&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">10000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/div[1]/div/section/div[3]/section/main/section/section/section/section/div/section/div[2]/div[2]/ul/li[3]/a&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/div[1]/div/section/div[3]/section/main/section/section/section/section/div/section/div[2]/div[2]/ul/li[1]/a/ul/li[1]/a&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">mainContent</span><span class="s0">\&quot;</span><span class="s3">]/section/section/section/section/section/section/ul/li[2]/article/div[2]/form/div[2]/button&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Step</span><span class="s2">(</span><span class="s3">&quot;Checkout the cart&quot;</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">stepCheckout</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">nav-bar-fix</span><span class="s0">\&quot;</span><span class="s3">]/div[1]/div/a[3]/span[1]&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">app-content-wrapper</span><span class="s0">\&quot;</span><span class="s3">]/div[3]/section/section/div/aside/div[3]/div/div[2]/button&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Step</span><span class="s2">(</span><span class="s3">&quot;Proceed to payment with invalid card details&quot;</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">stepPayment</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">mainContent</span><span class="s0">\&quot;</span><span class="s3">]/div/div[3]/div[1]/section[2]/div/div[2]/div[1]/div[1]/span/input&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//*[@id=</span><span class="s0">\&quot;</span><span class="s3">mainContent</span><span class="s0">\&quot;</span><span class="s3">]/div/div[3]/div[1]/section[2]/div/div[2]/div[3]/div[2]/div/button&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">10000</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">switchTo</span><span class="s2">().</span><span class="s1">frame</span><span class="s2">(</span><span class="s3">&quot;kpg-frame-component&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">10000</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;/html/body/section/section/section/div[2]/div[3]/div[1]/div[2]/div/div[3]/button&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;card-number&quot;</span><span class="s2">)).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;1234432167899876&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;expiry&quot;</span><span class="s2">)).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;0507&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">1000</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;cvv&quot;</span><span class="s2">)).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;16&quot;</span><span class="s2">);</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s3">&quot;validateCardForm&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+
+        <span class="s1">attachText</span><span class="s2">(</span><span class="s3">&quot;Error message (if any)&quot;</span><span class="s2">, </span><span class="s3">&quot;Invalid card details entered&quot;</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//html/body/section/section/section/div[2]/div[1]/aside&quot;</span><span class="s2">)).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">sleep</span><span class="s2">(</span><span class="s5">5000</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Invalid card number | Invalid expiry date | Invalid cvv&quot;</span><span class="s2">);</span>
+
+        <span class="s1">Allure</span><span class="s2">.</span><span class="s1">step</span><span class="s2">(</span><span class="s3">&quot;Close Payment iFrame modal&quot;</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">switchTo</span><span class="s2">().</span><span class="s1">defaultContent</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Attachment</span><span class="s2">(</span><span class="s1">value </span><span class="s2">= </span><span class="s3">&quot;{0}&quot;</span><span class="s2">, </span><span class="s1">type </span><span class="s2">= </span><span class="s3">&quot;text/plain&quot;</span><span class="s2">)</span>
+    <span class="s0">public </span><span class="s1">String attachText</span><span class="s2">(</span><span class="s1">String name</span><span class="s2">, </span><span class="s1">String content</span><span class="s2">) {</span>
+        <span class="s0">return </span><span class="s1">content</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@AfterTest</span>
+    <span class="s1">@Description</span><span class="s2">(</span><span class="s3">&quot;Close browser after test execution&quot;</span><span class="s2">)</span>
+    <span class="s1">@Severity</span><span class="s2">(</span><span class="s1">SeverityLevel</span><span class="s2">.</span><span class="s1">MINOR</span><span class="s2">)</span>
+    <span class="s0">public void </span><span class="s1">tearDown</span><span class="s2">() {</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">driver </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">driver</span><span class="s2">.</span><span class="s1">quit</span><span class="s2">();</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s0">private void </span><span class="s1">sleep</span><span class="s2">(</span><span class="s0">long </span><span class="s1">millis</span><span class="s2">) {</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s1">millis</span><span class="s2">);</span>
+        <span class="s2">} </span><span class="s0">catch </span><span class="s2">(</span><span class="s1">InterruptedException e</span><span class="s2">) {</span>
+            <span class="s0">throw new </span><span class="s1">RuntimeException</span><span class="s2">(</span><span class="s1">e</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
